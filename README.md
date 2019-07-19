@@ -40,7 +40,7 @@ If you want to train your own feature extractor, proceed to the next section.
 # Training a custom feature extractor 
 Since, the original deepsort focused on MARS dataset, which is based on people, the feature extractor is trained on humans. We need an equivalent feature extractor for vehicles. We shall be training a Siamese network for the same. More info on siamese nets can be found  [here](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf) and [here](https://towardsdatascience.com/lossless-triplet-loss-7e932f990b24)
 
-We have a training and testing set, extracted from the NVIDIA AI city Challenge dataset. You can download it from [here](https://nanonets.s3-us-west-2.amazonaws.com/blogs/object-tracking-blog-crops.tar.gz).
+We have a training and testing set, extracted from the NVIDIA AI city Challenge dataset. You can download it from [here](https://nanonets.s3-us-west-2.amazonaws.com/blogs/object-tracking-crops-data.tar.gz).
  
 Extract the ```crops``` and ```crops_test``` folders in the same working directory. Both folders have 184 different sub-folders, each of which contains crops of a certain vehicle, shot in various views. 
 Once, the folders have been extracted, we can go through the network configurations and the various options in ```siamese_net.py``` and ```siamese_dataloader.py```. If satisfied, we can start the training process by:
