@@ -1,5 +1,6 @@
 ## Object Tracking
 Installation: Use this command to install all the necessary packages. Note that we are using ```python3```
+
 Link to the blog [click here](https://blog.nanonets.com/object-tracking-deepsort/)
 ```sh
 pip install -r requirements.txt
