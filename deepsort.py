@@ -36,14 +36,11 @@ class deepsort_rbc():
 	def __init__(self,wt_path=None):
 		#loading this encoder is slow, should be done only once.
 		#self.encoder = generate_detections.create_box_encoder("deep_sort/resources/networks/mars-small128.ckpt-68577")		
-		if wt_path is not None:
-			self.encoder = torch.load(wt_path)			
-		else:
-			self.encoder = torch.load('ckpts/model640.pt')
+		self.encoder = torch.load(wt_path)			
 			
 		self.encoder = self.encoder.cuda()
 		self.encoder = self.encoder.eval()
-		print("Deep sort model loaded")
+		print("Deep sort model loaded from path: ", wt_path)
 
 		self.metric = nn_matching.NearestNeighborDistanceMetric("cosine",.5 , 100)
 		self.tracker= Tracker(self.metric)
