@@ -1,19 +1,6 @@
-import torchvision
-import torchvision.datasets as dset
-import torchvision.transforms as transforms
-from torch.utils.data import DataLoader,Dataset
-import matplotlib.pyplot as plt
-import torchvision.utils
-import numpy as np
-import random
-from PIL import Image
 import torch
-from torch.autograd import Variable
-import PIL.ImageOps    
 import torch.nn as nn
-from torch import optim
 import torch.nn.functional as F
-
 
 
 class SiameseNetwork(nn.Module):
@@ -36,7 +23,6 @@ class SiameseNetwork(nn.Module):
             nn.ReLU(inplace=True),
             nn.BatchNorm2d(128),
             #nn.Dropout2d(p=0.4),            
-
 
             nn.Conv2d(128,256,kernel_size=1,stride=2),
             nn.ReLU(inplace=True),
@@ -62,10 +48,8 @@ class SiameseNetwork(nn.Module):
 
     def forward_once(self, x):
         output = self.net(x)
-        #output = output.view(output.size()[0], -1)
-        #output = self.fc(output)
-        
-        output = torch.squeeze(output)
+        output = torch.flatten(output, start_dim=1)
+
         return output
 
     def forward(self, input1, input2,input3=None):
